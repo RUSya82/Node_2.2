@@ -1,27 +1,26 @@
-import http from 'http';
+import express from 'express';
 
 const port = 8000;
 const host = '127.0.0.1'
 
-const server = http.createServer((req, res) => {
-    switch (req.method){
-        case 'GET':
-            switch (req.url) {
-                case '/hello':
-                    res.statusCode = 200;
-                    res.setHeader('Content-Type', 'text/plain');
-                    res.end('Hello!')
-                    break;
-            }
-            break;
-        case 'POST':
-            if(req.url === '/user'){
-                res.statusCode = 201;
-                res.end('User!')
-            }
-    }
+const app = express();
+const user = { name: 'jura', age: 22 };
+app.get('/hello', (req, res)=> {
+    res.end('Hello!')
 });
 
-server.listen(port, host, () => {
+// app.post('/user', (req, res) => {
+//     res.send('User!')
+// })
+
+app.route('/user')
+    .get( (req, res) => {
+    res.end(user.name);
+}).post((req, res) => {
+    res.end('User Post')
+})
+
+app.listen(port, () => {
     console.log(`Server started at ${host}:${port}`)
 })
+
