@@ -1,0 +1,12 @@
+{
+  "name": "node_2.2",
+  "version": "1.0.0",
+  "description": "API NodeJS",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ruslan Salimov",
+  "license": "ISC"
+}
